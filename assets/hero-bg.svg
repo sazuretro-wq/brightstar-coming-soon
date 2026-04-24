@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice">
+  <defs>
+    <linearGradient id="floor" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1E3A5F" />
+      <stop offset="1" stop-color="#0F2A4A" />
+    </linearGradient>
+    <linearGradient id="wall" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#2a4466" />
+      <stop offset="1" stop-color="#172f4d" />
+    </linearGradient>
+  </defs>
+  <rect width="1600" height="900" fill="url(#wall)" />
+  <!-- Floor perspective -->
+  <polygon points="0,550 1600,550 1600,900 0,900" fill="url(#floor)" />
+  <!-- Vanishing-point perspective lines hinting at a corridor -->
+  <g stroke="rgba(255,255,255,0.05)" stroke-width="1">
+    <line x1="0" y1="900" x2="800" y2="550" />
+    <line x1="200" y1="900" x2="800" y2="550" />
+    <line x1="400" y1="900" x2="800" y2="550" />
+    <line x1="600" y1="900" x2="800" y2="550" />
+    <line x1="1000" y1="900" x2="800" y2="550" />
+    <line x1="1200" y1="900" x2="800" y2="550" />
+    <line x1="1400" y1="900" x2="800" y2="550" />
+    <line x1="1600" y1="900" x2="800" y2="550" />
+  </g>
+  <!-- Ceiling light strips -->
+  <g fill="rgba(255,255,255,0.06)">
+    <rect x="760" y="120" width="80" height="4" />
+    <rect x="740" y="180" width="120" height="4" />
+    <rect x="720" y="240" width="160" height="4" />
+    <rect x="690" y="310" width="220" height="4" />
+    <rect x="650" y="390" width="300" height="5" />
+  </g>
+  <!-- Subtle floor reflection highlight -->
+  <ellipse cx="800" cy="700" rx="700" ry="60" fill="rgba(255,255,255,0.04)" />
+</svg>

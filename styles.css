@@ -1,0 +1,250 @@
+/* Brightstar — Under Construction */
+
+:root {
+  --navy-900: #0F2A4A;
+  --navy-800: #142f54;
+  --navy-700: #1E3A5F;
+  --green-500: #A3D043;
+  --green-600: #8fbb34;
+  --blue-50: #E5E9F5;
+  --gray-50: #F5F6F8;
+  --white: #ffffff;
+  --text-body: #2A2A2A;
+  --muted: rgba(255, 255, 255, 0.72);
+
+  --radius-btn: 4px;
+  --max-w: 880px;
+  --pad-x: clamp(20px, 5vw, 72px);
+  --pad-y: clamp(20px, 4vh, 48px);
+}
+
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html, body { height: 100%; }
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: var(--white);
+  background: var(--navy-900);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+/* ---------- Background ----------
+   Layered: navy base + radial navy glow + blurred hero photo at low opacity.
+   Photo URL is a royalty-free Unsplash interior shot — Mikias can drop
+   assets/hero-bg.jpg next to this file to replace it without touching CSS. */
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -2;
+  background:
+    radial-gradient(1200px 800px at 70% 20%, rgba(30, 58, 95, 0.9), transparent 60%),
+    radial-gradient(900px 700px at 15% 90%, rgba(163, 208, 67, 0.08), transparent 60%),
+    linear-gradient(180deg, var(--navy-900) 0%, var(--navy-800) 60%, var(--navy-900) 100%);
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  /* Ships with an SVG placeholder — swap `hero-bg.svg` for a photo (`hero-bg.jpg` etc.) to use a real image. */
+  background-image: url("assets/hero-bg.svg");
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18;
+  filter: blur(6px) saturate(0.8);
+  pointer-events: none;
+}
+
+/* ---------- Shell ---------- */
+.shell {
+  min-height: 100dvh;
+  display: grid;
+  grid-template-rows: auto 1fr auto;
+  padding: var(--pad-y) var(--pad-x);
+  max-width: 1440px;
+  margin: 0 auto;
+  position: relative;
+}
+
+.topbar {
+  display: flex;
+  align-items: center;
+}
+
+.logo { display: inline-flex; }
+.logo img { height: 28px; width: auto; display: block; }
+
+/* ---------- Hero block ---------- */
+.hero {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  gap: clamp(16px, 2.4vh, 28px);
+  padding: clamp(32px, 6vh, 64px) 0;
+  max-width: var(--max-w);
+  margin: 0 auto;
+}
+
+.eyebrow {
+  margin: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: clamp(12px, 1.2vw, 14px);
+  font-weight: 600;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--white);
+  opacity: 0.92;
+}
+.eyebrow .dot {
+  width: 8px;
+  height: 8px;
+  background: var(--green-500);
+  display: inline-block;
+}
+
+.headline {
+  margin: 0;
+  font-weight: 900;
+  font-size: clamp(40px, 7vw, 92px);
+  line-height: 1.02;
+  letter-spacing: -0.015em;
+  text-transform: uppercase;
+  color: var(--white);
+  text-wrap: balance;
+}
+
+.message {
+  margin: 0;
+  font-size: clamp(16px, 1.6vw, 19px);
+  line-height: 1.6;
+  color: var(--muted);
+  max-width: 56ch;
+  text-wrap: pretty;
+}
+
+/* Hide the extra break on small screens where natural wrapping is fine */
+.br-lg { display: none; }
+@media (min-width: 720px) { .br-lg { display: inline; } }
+
+/* ---------- CTA buttons ---------- */
+.cta-row {
+  display: flex;
+  gap: 14px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-top: clamp(8px, 2vh, 20px);
+}
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: var(--radius-btn);
+  font-weight: 700;
+  font-size: 15px;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  border: 2px solid transparent;
+  transition: transform 160ms ease, box-shadow 160ms ease, background 160ms ease, color 160ms ease;
+  white-space: nowrap;
+}
+.btn:focus-visible {
+  outline: 2px solid var(--green-500);
+  outline-offset: 3px;
+}
+.btn-icon {
+  width: 18px;
+  height: 18px;
+  flex-shrink: 0;
+}
+.chev {
+  font-weight: 800;
+  transform: translateY(-1px);
+  font-size: 17px;
+}
+
+.btn-primary {
+  background: var(--green-500);
+  color: var(--navy-900);
+}
+.btn-primary:hover {
+  background: var(--green-600);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(163, 208, 67, 0.25);
+}
+
+.btn-ghost {
+  background: transparent;
+  color: var(--white);
+  border-color: rgba(255, 255, 255, 0.55);
+}
+.btn-ghost:hover {
+  background: rgba(255, 255, 255, 0.08);
+  border-color: var(--white);
+  transform: translateY(-1px);
+}
+
+/* ---------- Footer ---------- */
+.footbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  flex-wrap: wrap;
+  font-size: 13px;
+  color: rgba(255, 255, 255, 0.6);
+  border-top: 1px solid rgba(255, 255, 255, 0.08);
+  padding-top: 18px;
+}
+.footbar p { margin: 0; }
+.emergency {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+}
+.pulse {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--green-500);
+  box-shadow: 0 0 0 0 rgba(163, 208, 67, 0.6);
+  animation: pulse 2s ease-out infinite;
+}
+@keyframes pulse {
+  0%   { box-shadow: 0 0 0 0 rgba(163, 208, 67, 0.6); }
+  70%  { box-shadow: 0 0 0 12px rgba(163, 208, 67, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(163, 208, 67, 0); }
+}
+
+/* ---------- Breakpoints ---------- */
+@media (max-width: 640px) {
+  .headline { font-size: clamp(34px, 10vw, 48px); }
+  .cta-row { flex-direction: column; width: 100%; }
+  .btn { justify-content: center; width: 100%; }
+  .footbar { justify-content: center; text-align: center; }
+}
+
+@media (max-width: 360px) {
+  .headline br { display: none; }
+}
+
+/* Respect reduced-motion preferences */
+@media (prefers-reduced-motion: reduce) {
+  .pulse { animation: none; }
+  .btn { transition: none; }
+}
