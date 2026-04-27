@@ -1,6 +1,6 @@
-# Brightstar — Coming Soon
+# BrightStar — Coming Soon
 
-Static under-construction page for **Brightstar Cleaning & Maintenance** (Twin Cities, MN), used while the main site is being rebuilt.
+Static under-construction page for **BrightStar Cleaning & Maintenance** (Twin Cities, MN), used while the main site is being rebuilt.
 
 ## Stack
 
@@ -11,7 +11,7 @@ Plain HTML + CSS + one SVG logo. No build step, no dependencies.
 ```
 index.html          — markup + meta
 styles.css          — brand tokens, layout, responsive breakpoints
-favicon.svg         — Brightstar mark
+favicon.svg         — BrightStar mark
 assets/
   logo.svg          — dark-background variant (white BRIGHT + bright green STAR)
   logo-brand.svg    — original logo on transparent (for light backgrounds)
